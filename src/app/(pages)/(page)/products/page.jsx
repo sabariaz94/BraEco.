@@ -109,21 +109,37 @@ import ProductShowcase from '../../../../components/ProductShowcase';
 import { getProducts } from '../../../../sanity/lib/getProducts';
 import React, { useEffect, useState } from 'react'
 
-const page = () => {
-    const [products, setProducts] = useState([]);
-  console.log("prod",products);
-  
-    useEffect(() => {
-      getProducts().then(setProducts);
-    }, []);
-  
+const Page = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getProducts().then(setProducts);
+  }, []);
+
   return (
-    <div>
-        <Navbar/>
-      <ProductShowcase title="Featured Bras" products={products} />
-      <Footer/>
+    <div className="min-h-screen flex flex-col font-sans 
+      bg-white text-black 
+      dark:bg-black dark:text-white 
+      transition-colors duration-300 ease-in-out">
+
+      {/* Navbar */}
+      <Navbar className="border-b border-gray-200 dark:border-gray-700 
+        bg-white dark:bg-black text-black dark:text-white" />
+
+      {/* Product Showcase */}
+      <main className="flex-1 px-4 sm:px-6 py-6">
+        <ProductShowcase
+          title="Featured Bras"
+          products={products}
+          className="text-black dark:text-white"
+        />
+      </main>
+
+      {/* Footer */}
+      <Footer className="border-t border-gray-200 dark:border-gray-700 
+        bg-white dark:bg-black text-gray-600 dark:text-gray-400" />
     </div>
   )
 }
 
-export default page
+export default Page;
