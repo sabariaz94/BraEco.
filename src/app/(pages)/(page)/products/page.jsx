@@ -119,7 +119,7 @@ const Page = () => {
   return (
     <div className="min-h-screen flex flex-col font-sans 
       bg-white text-black 
-      dark:bg-black dark:text-white 
+      dark:bg-black dark:text-black
       transition-colors duration-300 ease-in-out">
 
       {/* Navbar */}
