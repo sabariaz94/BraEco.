@@ -43,13 +43,13 @@ export default function Footer() {
     <footer className="bg-gradient-to-br from-pink-50 via-white to-pink-50 border-t mt-10 text-gray-600 shadow-inner">
       <div className="max-w-7xl mx-auto px-6 py-10">
         
-        {/* Branding & Social */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div className="text-center md:text-left">
-            {/* Branding - choose one style */}
-            <p className="text-2xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
-              BraFlame Lingerie Studio®
-            </p>
+<div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+  <div className="text-center md:text-left">
+    {/* Branding - Pink Text */}
+    <p className="text-2xl font-bold text-pink-700">
+      BraFlame Lingerie Studio®
+    </p>
+  
             <p className="text-sm text-gray-500">
               Igniting creativity, protecting our brand.
             </p>
