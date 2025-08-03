@@ -93,21 +93,22 @@ function ProductCard({
         )}
 
         {/* Size Dropdown */}
-        <select
-          value={selectedSize}
-          onChange={(e) => {
-            setSelectedSize(e.target.value);
-            setQuantity(1);
-          }}
-          className="w-full border border-gray-300 dark:border-gray-600 rounded-md px-2 py-2 sm:px-3 sm:py-2 text-xs sm:text-sm bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-500 mt-3"
-        >
-          <option value="">Select Size</option>
-          {Object.entries(sizeStock).map(([size, stock]) => (
-            <option key={size} value={size} disabled={stock === 0}>
-              {size} {stock === 0 ? '– Out of Stock' : `– ${stock} left`}
-            </option>
-          ))}
-        </select>
+    <select
+  value={selectedSize}
+  onChange={(e) => {
+    setSelectedSize(e.target.value);
+    setQuantity(1);
+  }}
+  className="w-full border border-gray-300 dark:border-gray-600 rounded-md px-2 py-2 sm:px-3 sm:py-2 text-xs sm:text-sm bg-white text-gray-800 dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-pink-500 mt-3"
+>
+  <option value="">Select Size</option>
+  {Object.entries(sizeStock).map(([size, stock]) => (
+    <option key={size} value={size} disabled={stock === 0}>
+      {size} {stock === 0 ? '– Out of Stock' : `– ${stock} left`}
+    </option>
+  ))}
+</select>
+
 
         {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
 
