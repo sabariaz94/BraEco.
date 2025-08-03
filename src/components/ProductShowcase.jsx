@@ -12,19 +12,21 @@ export default function ProductShowcase({ title, products = [] }) {
 
   const handleAddToCartClick = (product) => {
     setSelectedProduct(product);
-    setSelectedSize("");
+    setSelectedSize(""); // reset previous selection
   };
 
   const handleConfirmAdd = () => {
     if (!selectedSize) return alert("Please select a size.");
     addToCart({ ...selectedProduct, selectedSize });
-    setSelectedProduct(null);
+    setSelectedProduct(null); // close modal
   };
 
   return (
-    <section className="py-8 px-4 sm:px-6 max-w-7xl mx-auto">
+    <section className="py-10 px-4 sm:px-6 max-w-7xl mx-auto bg-white dark:bg-gray-950 transition-colors duration-300">
       {/* Title */}
-      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">
+      <h2 className="text-2xl sm:text-3xl font-bold 
+        text-gray-900 dark:text-gray-100 
+        mb-8 text-center">
         {title}
       </h2>
 
@@ -43,50 +45,54 @@ export default function ProductShowcase({ title, products = [] }) {
       </div>
 
       {/* Size Selection Modal */}
-      {selectedProduct && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4">
-          {/* Scrollable Modal for Mobile */}
-          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg w-full max-w-md max-h-[90vh] overflow-y-auto p-6">
-            {/* Modal Title */}
-            <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 text-center">
-              Select Size for {selectedProduct.title}
-            </h3>
+{selectedProduct && (
+  <div className="fixed inset-0 bg-black/60 dark:bg-black/80 z-50 flex items-center justify-center px-4 transition-colors duration-300">
+    <div className="bg-black dark:bg-gray-900 rounded-xl p-6 w-full max-w-md shadow-lg border border-gray-200 dark:border-gray-700">
+      {/* Title */}
+      <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-black mb-4">
+        Select Size for <span className="text-pink-700 dark:text-pink-400">{selectedProduct.title}</span>
+      </h3>
 
-            {/* Size Options */}
-            <div className="flex flex-wrap justify-center gap-3 mb-6">
-              {selectedProduct.sizes?.map((size) => (
-                <button
-                  key={size}
-                  className={`px-5 py-2 border rounded-full text-sm sm:text-base font-medium transition-colors ${
-                    selectedSize === size
-                      ? "bg-pink-600 text-white border-pink-600"
-                      : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600 hover:bg-pink-100 dark:hover:bg-pink-700"
-                  }`}
-                  onClick={() => setSelectedSize(size)}
-                >
-                  {size}
-                </button>
-              ))}
-            </div>
+      {/* Size Buttons */}
+      <div className="flex gap-3 flex-wrap mb-6">
+        {selectedProduct.sizes?.map((size) => (
+          <button
+            key={size}
+            className={`px-4 py-2 border rounded-full text-sm font-medium transition-all duration-200 ${
+              selectedSize === size
+                ? "bg-pink-600 text-black border-pink-600"
+                : "bg-black text-gray-700 border-gray-300 hover:bg-pink-100 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-gray-700"
+            }`}
+            onClick={() => setSelectedSize(size)}
+          >
+            {size}
+          </button>
+        ))}
+      </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row justify-end gap-4">
-              <button
-                onClick={() => setSelectedProduct(null)}
-                className="px-4 py-2 rounded-md border text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 w-full sm:w-auto"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleConfirmAdd}
-                className="px-6 py-2 rounded-md bg-pink-600 text-white font-semibold hover:bg-pink-700 w-full sm:w-auto"
-              >
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Action Buttons */}
+      <div className="flex justify-end gap-3 sm:gap-4">
+        <button
+          onClick={() => setSelectedProduct(null)}
+          className="px-4 py-2 rounded-md border 
+            border-gray-300 dark:border-gray-600
+            text-gray-600 dark:text-gray-300 
+            hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+        >
+          Cancel
+        </button>
+        <button
+          onClick={handleConfirmAdd}
+          className="px-6 py-2 rounded-md bg-pink-600 
+            text-white font-semibold hover:bg-pink-700 transition"
+        >
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+)}
     </section>
   );
 }
+
