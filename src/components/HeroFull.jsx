@@ -14,27 +14,16 @@ const slides = [
     type: 'video',
     baseUrl: "/images/video.mp4", // /public folder path
     thumbnail: '/assets/images/hero-1.jpg',
-<<<<<<< HEAD
-    caption: 'Luxury • Comfort • Confidence',
-=======
->>>>>>> 370a1e322461699cf2af6e44ab14bd495873fb83
+    
   },
 ];
 
 export default function HeroSlider() {
   const [muted, setMuted] = useState(true);
-<<<<<<< HEAD
-  const toggleMute = () => setMuted((prev) => !prev);
-
-  return (
-    <section className="relative w-full h-[60vh] sm:h-[80vh] md:h-screen overflow-hidden">
-=======
-
   const toggleMute = () => setMuted((prev) => !prev);
 
   return (
     <section className="relative w-full h-screen sm:h-[90vh] md:h-screen overflow-hidden">
->>>>>>> 370a1e322461699cf2af6e44ab14bd495873fb83
       <Swiper
         modules={[Autoplay, Pagination, Navigation, EffectFade]}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
@@ -57,28 +46,17 @@ export default function HeroSlider() {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-<<<<<<< HEAD
-            <div className="relative w-full h-[60vh] sm:h-[80vh] md:h-screen">
+            <div className="relative w-full h-screen sm:h-[90vh] md:h-screen">
               {/* Video */}
               {slide.type === 'video' && (
                 <div className="relative w-full h-full bg-black">
-=======
-            <div className="relative w-full h-screen sm:h-[90vh] md:h-screen">
-              {/* Local MP4 Video */}
-              {slide.type === 'video' && (
-                <div className="relative w-full h-full">
->>>>>>> 370a1e322461699cf2af6e44ab14bd495873fb83
                   <video
                     src={slide.baseUrl}
                     muted={muted}
                     autoPlay
                     loop
                     playsInline
-<<<<<<< HEAD
-                    className="absolute inset-0 w-full h-full object-contain sm:object-cover"
-=======
-                    className="absolute inset-0 w-full h-full object-cover sm:object-cover md:object-cover"
->>>>>>> 370a1e322461699cf2af6e44ab14bd495873fb83
+                    className="absolute inset-0 w-full h-full object-cover"
                   />
                   {/* Mute / Unmute Button */}
                   <button
