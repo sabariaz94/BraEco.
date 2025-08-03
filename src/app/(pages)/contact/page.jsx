@@ -111,11 +111,12 @@ export default function ContactPage() {
 
             {/* Submit Button */}
             <button
-              type="submit"
-              className="w-full bg-gradient-to-r from-black to-gray-900 dark:from-pink-600 dark:to-pink-500 text-white font-semibold py-3 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-200"
-            >
-              📩 Send Message
-            </button>
+  type="submit"
+  className="w-full bg-black hover:bg-pink-800 text-white font-semibold py-3 rounded-lg shadow-md transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+>
+  📩 Send Message
+</button>
+
 
             {/* Status Message */}
             {status && (
@@ -138,4 +139,3 @@ export default function ContactPage() {
     </>
   );
 }
-
